@@ -15,7 +15,7 @@ services:
       - canopy-data:/root/.canopy
     environment:
       - CANOPY_ENV=${CANOPY_ENV:-mainnet}
-      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_LEVEL=${LOG_LEVEL:-debug}
     networks:
       - canopy-net
     healthcheck:
@@ -37,7 +37,8 @@ services:
     environment:
       - CHECK_INTERVAL=${UPDATE_CHECK_INTERVAL:-3600}
       - CANOPY_CONTAINER=canopy-node
-      - REPO_URL=${REPO_URL:-https://github.com/canopy-network/canopy}
+      # point auto-updater at my personal fork instead of upstream
+      - REPO_URL=${REPO_URL:-https://github.com/myusername/canopy}
     depends_on:
       - canopy
     networks:
